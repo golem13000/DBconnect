@@ -1,6 +1,6 @@
 <?php
 ​
-class DbConnect implements Crud {
+abstract class DbConnect implements Crud {
 ​
     protected $pdo;
     protected $id;
@@ -9,10 +9,14 @@ class DbConnect implements Crud {
         $this->pdo = new PDO(DATABASE, LOGIN, PASSWD);
         $this->id = $id;
     }
+
+    //Récupération d' une propriétée d'une classe
 ​
     function getId (): ?int {
         return $this->id;
     }
+
+    //Methode de l'interface Crud
 
     abstract function insert();
 

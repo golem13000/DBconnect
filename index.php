@@ -1,12 +1,22 @@
 <?php
 
+session_start();
+//var_dump($_session);
+
+// installation ou implémentation de la conncetion a la base de donnée 
+
+
 require "conf/global.php";
+
+//chargement des classes
 
 spl_autoload_register(function ($class) {
     if(file_exists("models/$class.php")){
         require_once "models/$class.php";
     }
 });
+
+//routeur=chemin d'acces
 
 $route = isset($_REQUEST["route"])? $_REQUEST["route"] : "home";
 
@@ -24,10 +34,14 @@ switch($route) {
     default : showHome();
 }
 
+//redirection vers les pages demandées
+
 function showHome(): string {
 
     return "home.html";
 }
+
+//insertion d'un utilisateur dans la bdd
 
 function insertUser() {
 if(!empty($_POST['pseudo'] && !empty($_POST['password']))){
@@ -44,6 +58,8 @@ header('Location:index.php');
 
 }
 
+//Permet de connecté un utilisateur depuis la bdd
+
 function connectUser() {
     echo "ok";
     if(!empty($_POST['pseudo'] && !empty($_POST['password']))){
@@ -53,6 +69,8 @@ function connectUser() {
         $user->verify_user();
         }
     }
+
+//permet de deconnecté un utilisateur
 
     function deconnectUser() {
     unset($_SESSION['pseudo']);

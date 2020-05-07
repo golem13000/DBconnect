@@ -1,11 +1,16 @@
 <?php
-session_start();
 
-class Utilisateurs extends Dbconnect {
+
+class Utilisateurs extends DbConnect {
+
+//variable pour implémenté un utilisateur
+
     private $idUtilisateur;
     private $adresse;
     private $pseudo;
     private $password;
+
+// constructeur
 
     function __construct($id=null) {
         parent::__construct($id);
@@ -44,6 +49,8 @@ class Utilisateurs extends Dbconnect {
         $this->password = $password;
     }
 
+    //permet la sauvegarde des données utilisateurs
+
     public function save_user() {
         $file = file_get_contents("index.json");
         $tab = json_decode($file, false, 512, 0);
@@ -58,6 +65,8 @@ class Utilisateurs extends Dbconnect {
             file_put_contents('index.json', json_encode($tab));
         }        
     }
+
+ // permet la verification des données utilisateurs   
 
     public function verify_user(){
         $file = file_get_contents("index.json");
@@ -78,6 +87,8 @@ class Utilisateurs extends Dbconnect {
 
 }
 
+//Permet de selectionné toutes les lignes de notre table
+
     public function selectAll(){
         $query ="SELECT * FROM utilisateur;";
         $result = $this->pdo->prepare($query);
@@ -86,7 +97,7 @@ class Utilisateurs extends Dbconnect {
 
         $tab=[];
 
-        var_dump($datas);
+        //var_dump($datas);
 
         foreach($datas as $data) {
             $current = new Utilisateurs();
@@ -96,17 +107,27 @@ class Utilisateurs extends Dbconnect {
             return $tab;
 
     }
+
+//Permet de selectionné une ligne de notre table
+
     public function select(){
 
     }
 
+//Permet de selectionné toutes les lignes de notre table    
+
     public fonction selectAll(){
 
     } 
+
+//permet de modifié  les lignes ou tables  
     
     public function update(){
 
     }
+
+// permet de suprimer les lignes ou tables
+
    public function delete(){
         
     }
