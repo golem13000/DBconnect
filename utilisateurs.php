@@ -85,6 +85,18 @@ class Utilisateurs extends DbConnect {
 
    public function insert() {
 
+    $query = "insert into user ('id', 'adresse', 'pseudo','password')
+              values( :id, :adresse, :speudo, :password)";
+    $result = $this->pdo->prepare($query);
+    $result->bindValue(' :id' , $this->id, pdo::param_str);
+    $result->bindValue(' :adresse' , $this->adresse, pdo::param_str);
+    $result->bindValue(' :pseudo' , $this->pseudo, pdo::param_str);
+    $result->bindValue(' :password', $this->password, pdo::param_str);
+    $result->execute();
+    
+    $this->id = $this->pdo->lastInsertId();
+    return $this;
+
 }
 
 //Permet de selectionné toutes les lignes de notre table
@@ -111,6 +123,7 @@ class Utilisateurs extends DbConnect {
 //Permet de selectionné une ligne de notre table
 
     public function select(){
+
 
     }
 
