@@ -88,10 +88,10 @@ class Utilisateurs extends DbConnect {
     $query = "insert into user ('id', 'adresse', 'pseudo','password')
               values( :id, :adresse, :speudo, :password)";
     $result = $this->pdo->prepare($query);
-    $result->bindValue(' :id' , $this->id, pdo::param_str);
-    $result->bindValue(' :adresse' , $this->adresse, pdo::param_str);
-    $result->bindValue(' :pseudo' , $this->pseudo, pdo::param_str);
-    $result->bindValue(' :password', $this->password, pdo::param_str);
+    $result->bindValue(' :id' , $this->id, pdo::PARAM_STR);
+    $result->bindValue(' :adresse' , $this->adresse, pdo::PARAM_STR);
+    $result->bindValue(' :pseudo' , $this->pseudo, pdo::PARAM_STR);
+    $result->bindValue(' :password', $this->password, pdo::PARAM_STR);
     $result->execute();
     
     $this->id = $this->pdo->lastInsertId();
