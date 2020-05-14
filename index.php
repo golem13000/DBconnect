@@ -62,7 +62,7 @@ header('Location:index.php');
 
 function connectUser() {
     echo "ok";
-    if(!empty($_POST['pseudo'] && !empty($_POST['password']))){
+    if(!empty($_POST['pseudo']) && !empty($_POST['password'])){
         $user = new Utilisateurs();
         $user-> setPseudo($_POST['pseudo']);
         $user-> setPassword($_POST['password']);

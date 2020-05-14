@@ -29,7 +29,7 @@ abstract class DbConnect implements Crud {
     abstract function select();
 }
 
-?>
+
 function showMembre() {
     ​
         // Visualiser temporairement les données d'un utilisateur
@@ -38,3 +38,5 @@ function showMembre() {
     ​
         return "membre.php";
 }    
+
+?>
