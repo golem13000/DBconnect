@@ -31,7 +31,7 @@ switch($route) {
         break;
     case "deconnect" : deconnectUser();
         break;
-    default : showHome();
+    default : $view=showHome();
 }
 
 //redirection vers les pages demandées

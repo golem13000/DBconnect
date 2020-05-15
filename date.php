@@ -36,19 +36,59 @@
 //$month = new Month(5);
 //var_dump($month);
 
-class month{
-    private $monthName;
-    public function __construct(int $monthName){
-        $this->setMonthName($monthNum);
+//class month{
+  //  private $monthName;
+    //public function __construct(int $monthName){
+      //  $this->setMonthName($monthNum);
+    //}
+    //public function getMonthName(): string {
+      //  return $this->monthName;
+    //}
+    //public function setMonthName(int $num) {
+      //  $fr_names = [1 => "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+        //$this->monthName = $fr_names[$num];
+    //}
+//}
+//$aujd = new DateTimeImmutable("now", new DateTimeZone("europe/Paris"));
+
+//$annee_courante = $aujd->format("y");
+//$mois_courant = $aujd->format("m");
+//$jour_courant = $aujd->format("d");
+
+//echo "Nous sommes le $jour_courant/$mois_courant/$annee_courante";
+//require "DbConnect/Date.php";
+
+//$month = new Month($mois_courant);
+//var_dump($month);
+
+
+class month{  
+  private $monthName;
+  private $year;
+
+  public function __construct(int $monthNum, int $year){
+    $this->setMonthName($monthNum);
+    $this->year = $year;
+  }
+
+  public function getMonthName(): string {
+    return $this->monthName;
+  }
+
+  public function setMonthName(int $num){$fr_names = [1 => "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+    $this->monthName = $fr_names[$num];}
+
+    public function getYear(): int {
+      return $this->year;
     }
-    public function getMonthName(): string {
-        return $this->monthName;
+
+    public function setYear(int $year) {
+      $this->year = $year;
     }
-    public function setMonthName(int $num) {
-        $fr_names = [1 => "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
-        $this->monthName = $fr_names[$num];
-    }
+
+            
 }
+
 $aujd = new DateTimeImmutable("now", new DateTimeZone("europe/Paris"));
 
 $annee_courante = $aujd->format("y");
@@ -56,11 +96,13 @@ $mois_courant = $aujd->format("m");
 $jour_courant = $aujd->format("d");
 
 echo "Nous sommes le $jour_courant/$mois_courant/$annee_courante";
+require "DbConnect/Date.php";
 
-require "DBConnect/Date.php";
-
-$month = new Month($mois_courant);
+$month = new Month($mois_courant,$annee_courante);
 var_dump($month);
+echo "Nous sommes en {$month->getMonthName()} {$month->getYear()}";
+
+
 
 
 

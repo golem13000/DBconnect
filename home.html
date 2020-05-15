@@ -4,9 +4,12 @@
     <head>
          <title>Ma TODO List</title>
          <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <link rel="stylesheet" type="text/css" href="style.css">
      </head>   
  <body>
+   <!--inclusion sous-templates-->
+  <?php require "views/{$wiew['template']}"; ?php
 
  <h2>Inscrivez-vous</h2>
 
@@ -49,5 +52,6 @@
     </form>
 </div>
  </section>
+
      </body>
  </html>
