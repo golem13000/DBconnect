@@ -20,23 +20,47 @@
 //$premier_lundi_precedent = ((int) $premier_lundi->format("d")=== 01)? $premier_lundi :
 //$premier_lundi->modify("last monday");  
 
-Class Month {
-    private $monthName;
+//Class Month {
+  //  private $monthName;
 
-    public function getMonthName():string {
+    //public function getMonthName():string {
+      //  return $this->monthName;
+    //}
+
+    //public function setMonthName(string $date) {
+      //  $this->monthName = $date;
+    //}
+
+//}
+
+//$month = new Month(5);
+//var_dump($month);
+
+class month{
+    private $monthName;
+    public function __construct(int $monthName){
+        $this->setMonthName($monthNum);
+    }
+    public function getMonthName(): string {
         return $this->monthName;
     }
-
-    public function setMonthName(string $date) {
-        $this->monthName = $date;
+    public function setMonthName(int $num) {
+        $fr_names = [1 => "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+        $this->monthName = $fr_names[$num];
     }
-
 }
+$aujd = new DateTimeImmutable("now", new DateTimeZone("europe/Paris"));
 
-$month = new Month(5);
+$annee_courante = $aujd->format("y");
+$mois_courant = $aujd->format("m");
+$jour_courant = $aujd->format("d");
+
+echo "Nous sommes le $jour_courant/$mois_courant/$annee_courante";
+
+require "DBConnect/Date.php";
+
+$month = new Month($mois_courant);
 var_dump($month);
-
-
 
 
 
