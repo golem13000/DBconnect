@@ -23,23 +23,18 @@
 Class Month {
     private $monthDate;
 
-    public function getMonth() {
+    public function getMonthDate():string {
         return $this->monthDate;
     }
 
-    public function setMonth($month) {
-        $this->monthDate = $month;
+    public function setMonthDate(string $date) {
+        $this->monthDate = $date;
     }
-
-function monthDate($month) {
-    $month = $this->format('m');
-}
 
 }
 
 $month = new Month(5);
 var_dump($month);
-
 
 
 
