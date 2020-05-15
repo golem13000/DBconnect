@@ -21,14 +21,14 @@
 //$premier_lundi->modify("last monday");  
 
 Class Month {
-    private $monthDate;
+    private $monthName;
 
-    public function getMonthDate():string {
-        return $this->monthDate;
+    public function getMonthName():string {
+        return $this->monthName;
     }
 
-    public function setMonthDate(string $date) {
-        $this->monthDate = $date;
+    public function setMonthName(string $date) {
+        $this->monthName = $date;
     }
 
 }
